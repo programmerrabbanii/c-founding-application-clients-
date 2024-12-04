@@ -1,9 +1,14 @@
+import Bannar from "../components/Bannar";
+import ContactUs from "../components/ContactUs";
+import FAQ from "../components/FAQ";
+
 const Home = () => {
     return (
         <div>
-            <h3>this is home</h3>
+           <ContactUs></ContactUs>
+           <FAQ></FAQ>
         </div>
-    );
+    ); 
 };
 
 export default Home;

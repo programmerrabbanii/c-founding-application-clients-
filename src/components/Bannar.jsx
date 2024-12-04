@@ -1,6 +1,5 @@
 import React from "react";
-import ContactUs from "./ContactUs";
-import FAQ from "./FAQ";
+
 
 const Bannar = () => {
   return (
@@ -89,8 +88,7 @@ const Bannar = () => {
           </div>
         </div>
       </div>
-      <ContactUs></ContactUs>
-      <FAQ></FAQ>
+      
     </div>
   );
 };
