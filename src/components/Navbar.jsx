@@ -77,8 +77,14 @@ const Navbar = () => {
 
         {/* Right Section */}
         <div className="navbar-end">
-          <Link
+        <Link
             to="/register"
+            className="btn bg-[#00D9E9] text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-all"
+          >
+            Register
+          </Link>
+          <Link
+            to="/login"
             className="btn bg-[#00D9E9] text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-all"
           >
             Login
