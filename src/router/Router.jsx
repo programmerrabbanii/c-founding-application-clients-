@@ -8,6 +8,7 @@ import MyDonations from "../pages/MyDonations";
 import AddNewCampaign from "../pages/AddNewCampaign";
 import Register from "../pages/Register";
 import Login from "../pages/Login";
+import SeeMore from "../pages/SeeMore";
 
 const router=createBrowserRouter([
     {
@@ -17,7 +18,8 @@ const router=createBrowserRouter([
         children:[
             {
                 path:'/',
-                element:<Home></Home>
+                element:<Home></Home>,
+                loader:()=> fetch('http://localhost:5000/crowds')
 
             },
             {
@@ -26,11 +28,13 @@ const router=createBrowserRouter([
             },
             {
                 path:'/allcampaing',
-                element:<AllCampaign></AllCampaign>
+                element:<AllCampaign></AllCampaign>,
+                loader:()=>fetch('http://localhost:5000/allCrowds')
             },
             {
                 path:'/mydonation',
                 element:<MyDonations></MyDonations>
+                
             },
             {
                 path:'/addnewcampaing',
@@ -43,6 +47,11 @@ const router=createBrowserRouter([
             {
                 path:'/login',
                 element:<Login></Login>
+            },
+            {
+                path:"/seemore/:id",
+                element:<SeeMore></SeeMore>,
+                loader:({params})=>fetch(`http://localhost:5000/crowds/${params.id}`)
             }
         ]
     }

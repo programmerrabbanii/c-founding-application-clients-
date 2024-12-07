@@ -1,7 +1,22 @@
 import { Link, NavLink } from "react-router-dom";
 import navLogo from "../assets/business-crowdfundingLogo.jpg";
+import { useContext } from "react";
+import { AuthContext } from "../auth/AuthProvider";
 
 const Navbar = () => {
+  const { user, logOutUser } = useContext(AuthContext);
+
+  // Handle logout
+  const handleLogout = () => {
+    logOutUser()
+      .then(() => {
+        console.log("User logged out successfully!");
+      })
+      .catch((error) => {
+        console.error("Logout Error:", error);
+      });
+  };
+
   const link = (
     <>
       <li className="text-lg font-semibold ml-2 capitalize hover:text-[#00D9E9]">
@@ -76,22 +91,45 @@ const Navbar = () => {
         </div>
 
         {/* Right Section */}
-        <div className="navbar-end">
-        <Link
-            to="/register"
-            className="btn bg-[#00D9E9] text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-all"
-          >
-            Register
-          </Link>
-          <Link
-            to="/login"
-            className="btn bg-[#00D9E9] text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-all"
-          >
-            Login
-          </Link>
+        <div className="navbar-end flex items-center gap-4">
+          {user ? (
+            <>
+              <div className="flex items-center gap-2">
+                <img
+                  src={user.photoURL || "https://via.placeholder.com/40"}
+                  alt={user.displayName || "User"}
+                  className="w-10 h-10 rounded-full border"
+                />
+                <span className="text-lg font-semibold">
+                  {user.email || "Anonymous"}
+                </span>
+              </div>
+              <button
+                onClick={handleLogout}
+                className="btn bg-[#00D9E9] text-white px-4 py-2 rounded-lg hover:bg-[#00D9E9] transition-all"
+              >
+                Logout
+              </button>
+            </>
+          ) : (
+            <>
+              <Link
+                to="/login"
+                className="btn bg-[#00D9E9] text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-all"
+              >
+                Login
+              </Link>
+              <Link
+                to="/register"
+                className="btn bg-[#00D9E9] text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-all"
+              >
+                Register
+              </Link>
+            </>
+          )}
         </div>
-      </div> 
-    </div> 
+      </div>
+    </div>
   );
 };
 
