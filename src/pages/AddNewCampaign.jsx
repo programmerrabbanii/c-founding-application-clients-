@@ -26,7 +26,7 @@ const AddNewCampaing = () => {
     };
     console.log(newCampaign);
 
-    fetch('http://localhost:5000/crowds',{
+    fetch('http://localhost:5000/crowds/',{
         method:'POST',
         headers:{
             'content-type' : 'application/json'

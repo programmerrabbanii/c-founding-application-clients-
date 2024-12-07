@@ -1,10 +1,11 @@
 import { Link, useLoaderData } from "react-router-dom";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
+import { AuthContext } from "../auth/AuthProvider";
 
 const SeeMore = () => {
   const oneData = useLoaderData();
+  const {user}=useContext(AuthContext)
   const {
-    _id,
     imageURL,
     campaignType,
     title,
@@ -12,8 +13,9 @@ const SeeMore = () => {
     description,
     donationAmount,
     userName,
-    userEmail,
+    
   } = oneData;
+  oneData.userEmail=user?.email
  const handleDonate=()=>{
  
     fetch("http://localhost:5000/donate", {
