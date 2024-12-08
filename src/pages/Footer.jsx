@@ -12,7 +12,7 @@ const Footer = () => {
             <h4 className="text-xl font-semibold mb-4">Contact Us</h4>
             <ul>
               <li className="text-lg text-gray-400 mb-2">
-                <a href="mailto:info@campaign.com" className="hover:text-teal-400">info@campaign.com</a>
+                <a href="FundingApplication@gmail.com" className="hover:text-teal-400"> FundingApplication@gmail.com</a>
               </li>
               <li className="text-lg text-gray-400 mb-2">+123 456 7890</li>
               <li className="text-lg text-gray-400">123 Campaign St, City, Country</li>
