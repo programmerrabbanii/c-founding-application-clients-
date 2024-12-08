@@ -54,7 +54,8 @@ const Footer = () => {
 
         
         <div className="text-center text-gray-400 mt-12">
-          <p>&copy; 2024 Campaign Name. All rights reserved.</p>
+          <p>&copy; 2024  Crowd Funding Application
+          . All rights reserved.</p>
         </div>
       </div>
     </footer>
