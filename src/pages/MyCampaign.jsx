@@ -80,7 +80,7 @@ const MyCampaign = () => {
                   </button>
                 </td>
               </tr>
-            ))}
+            ))} 
           </tbody>
         </table>
       ) : (

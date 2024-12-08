@@ -2,12 +2,13 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../auth/AuthProvider";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
   const { createUser, loginGoogle, updateUserProfile, setUser } =
     useContext(AuthContext);
-  const [showPassword, setShowPassword] = useState(false); // Password visibility state
-
+  const [showPassword, setShowPassword] = useState(false); 
+  const navigat=useNavigate()
   const handleRegister = (e) => {
     e.preventDefault();
     const name = e.target.name.value;
@@ -15,7 +16,7 @@ const Register = () => {
     const email = e.target.email.value;
     const password = e.target.password.value;
 
-    // Password validation: Uppercase, Lowercase, Length >= 6
+    
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
 
     if (!passwordRegex.test(password)) {
@@ -31,15 +32,16 @@ const Register = () => {
       .then((result) => {
         const user = result.user;
 
-        // Update User Profile with name and photo
+        
         updateUserProfile({ displayName: name, photoURL: photo })
           .then(() => {
-            setUser({ ...user, displayName: name, photoURL: photo }); // User context update
+            setUser({ ...user, displayName: name, photoURL: photo }); 
             Swal.fire({
               icon: "success",
               title: "Registration Successful!",
               text: `Welcome, ${name}!`,
             });
+            navigat('/login')
           })
           .catch((error) => {
             console.error("Error updating profile:", error);
@@ -64,12 +66,13 @@ const Register = () => {
     loginGoogle()
       .then((result) => {
         const user = result.user;
-        setUser(user); // Set the Google user in context
+        setUser(user); 
         Swal.fire({
           icon: "success",
           title: "Google Login Successful!",
           text: `Welcome back, ${user.displayName}!`,
         });
+        
       })
       .catch((error) => {
         console.error("Google Login Error:", error);

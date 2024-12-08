@@ -1,17 +1,18 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../auth/AuthProvider";
-import Swal from "sweetalert2"; // SweetAlert2 import
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const { signinUser, loginGoogle } = useContext(AuthContext);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
-  // Login handler
   const handleLogin = async (e) => {
     e.preventDefault();
     const email = e.target.email.value;
-    const password = e.target.password.value;
-    
+    const password = e.target.password.value; 
+
     try {
       setLoading(true);
       await signinUser(email, password);
@@ -19,7 +20,7 @@ const Login = () => {
         icon: "success",
         title: "Logged in successfully",
       });
-      // You can redirect here after successful login
+      navigate("/"); 
     } catch (error) {
       Swal.fire({
         icon: "error",
@@ -31,7 +32,6 @@ const Login = () => {
     }
   };
 
-  // Google Login handler
   const handleGoogleLogin = async () => {
     try {
       setLoading(true);
@@ -40,7 +40,7 @@ const Login = () => {
         icon: "success",
         title: "Logged in with Google",
       });
-      // You can redirect here after successful Google login
+      navigate("/");
     } catch (error) {
       Swal.fire({
         icon: "error",

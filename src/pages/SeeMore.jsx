@@ -1,10 +1,12 @@
-import { Link, useLoaderData } from "react-router-dom";
-import { useContext, useEffect } from "react";
+import { useLoaderData } from "react-router-dom";
+import { useContext } from "react";
+import Swal from "sweetalert2"; // SweetAlert2 ইমপোর্ট করুন
 import { AuthContext } from "../auth/AuthProvider";
 
 const SeeMore = () => {
   const oneData = useLoaderData();
-  const {user}=useContext(AuthContext)
+  const { user } = useContext(AuthContext);
+
   const {
     imageURL,
     campaignType,
@@ -13,11 +15,11 @@ const SeeMore = () => {
     description,
     donationAmount,
     userName,
-    
   } = oneData;
-  oneData.userEmail=user?.email
- const handleDonate=()=>{
- 
+
+  oneData.userEmail = user?.email;
+
+  const handleDonate = () => {
     fetch("http://localhost:5000/donate", {
       method: "POST",
       headers: {
@@ -27,11 +29,33 @@ const SeeMore = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        if (data?.insertedId) {
+          // সফল হলে অ্যালার্ট দেখান
+          Swal.fire({
+            title: "Thank You!",
+            text: "Your donation was successfully added!",
+            icon: "success",
+            confirmButtonText: "OK",
+          });
+        } else {
+          // কোনো সমস্যা হলে অ্যালার্ট দেখান
+          Swal.fire({
+            title: "Error!",
+            text: "Something went wrong. Please try again.",
+            icon: "error",
+            confirmButtonText: "Retry",
+          });
+        }
       })
-      
- }
- 
+      .catch(() => {
+        Swal.fire({
+          title: "Error!",
+          text: "Failed to connect to the server.",
+          icon: "error",
+          confirmButtonText: "Retry",
+        });
+      });
+  };
 
   return (
     <div className="max-w-4xl mx-auto mt-10 p-6 bg-white border border-gray-200 rounded-lg shadow-lg">
@@ -68,7 +92,7 @@ const SeeMore = () => {
       {/* CTA Section */}
       <div className="mt-6 text-center">
         <button
-           onClick={handleDonate}
+          onClick={handleDonate}
           className="px-6 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-1 transition"
         >
           Donate Now
