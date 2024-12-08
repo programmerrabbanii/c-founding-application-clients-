@@ -18,7 +18,7 @@ const Footer = () => {
               <li className="text-lg text-gray-400">123 Campaign St, City, Country</li>
             </ul>
           </div>
-
+            
           
           <div className="w-full md:w-1/3 mb-6 md:mb-0">
             <h4 className="text-xl font-semibold mb-4">Quick Links</h4>

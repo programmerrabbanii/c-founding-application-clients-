@@ -154,13 +154,13 @@ const Register = () => {
           <p>Or</p>
           <button
             onClick={handleGoogleLogin}
-            className="btn bg-red-500 text-white mt-4"
+            className="btn bg-[#00D9E9] text-white mt-4"
           >
             Login with Google
           </button>
           <p className="mt-4">
             Already have an account?{" "}
-            <a href="/login" className="text-blue-500">
+            <a href="/login" className="text-[#00D9E9]">
               Login here
             </a>
           </p>

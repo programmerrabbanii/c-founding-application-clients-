@@ -2,6 +2,7 @@ import { Link, NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../auth/AuthProvider";
 import navLogo from "../assets/business-crowdfundingLogo.jpg";
+import ThemToggol from "./ThemToggol";
 
 const Navbar = () => {
   const { user, logOutUser } = useContext(AuthContext);
@@ -130,7 +131,7 @@ const Navbar = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink
+              <NavLink 
                 to="/addnewcampaing"
                 className="text-lg font-semibold ml-2 capitalize hover:text-[#00D9E9] active:text-[#00D9E9]"
               >
@@ -139,11 +140,12 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-
+       
         {/* Right Section */}
         <div className="navbar-end flex items-center gap-4">
+           <p> <ThemToggol></ThemToggol> </p>
           {user ? (
-            <>
+            <> 
               <div className="flex items-center gap-2">
                 <img
                   src={user.photoURL || "https://via.placeholder.com/40"}
