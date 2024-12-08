@@ -1,7 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
-import navLogo from "../assets/business-crowdfundingLogo.jpg";
 import { useContext } from "react";
 import { AuthContext } from "../auth/AuthProvider";
+import navLogo from "../assets/business-crowdfundingLogo.jpg";
 
 const Navbar = () => {
   const { user, logOutUser } = useContext(AuthContext);
@@ -16,36 +16,6 @@ const Navbar = () => {
         console.error("Logout Error:", error);
       });
   };
-
-  const link = (
-    <>
-      <li className="text-lg font-semibold ml-2 capitalize hover:text-[#00D9E9]">
-        <NavLink to="/" activeClassName="text-blue-700">
-          Home
-        </NavLink>
-      </li>
-      <li className="text-lg font-semibold ml-2 capitalize hover:text-[#00D9E9]">
-        <NavLink to="/mycampaing" activeClassName="text-blue-700">
-          My Campaign
-        </NavLink>
-      </li>
-      <li className="text-lg font-semibold ml-2 capitalize hover:text-[#00D9E9]">
-        <NavLink to="/allcampaing" activeClassName="text-blue-700">
-          All Campaign
-        </NavLink>
-      </li>
-      <li className="text-lg font-semibold ml-2 capitalize hover:text-[#00D9E9]">
-        <NavLink to="/mydonation" activeClassName="text-blue-700">
-          My Donation
-        </NavLink>
-      </li>
-      <li className="text-lg font-semibold ml-2 capitalize hover:text-[#00D9E9]">
-        <NavLink to="/addnewcampaing" activeClassName="text-blue-700">
-          Add New Campaign
-        </NavLink>
-      </li>
-    </>
-  );
 
   return (
     <div className="shadow-lg">
@@ -77,7 +47,46 @@ const Navbar = () => {
               tabIndex={0}
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
             >
-              {link}
+              <li>
+                <NavLink
+                  to="/"
+                  className="text-lg font-semibold ml-2 capitalize hover:text-[#00D9E9] active:text-[#00D9E9]"
+                >
+                  Home
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/mycampaing"
+                  className="text-lg font-semibold ml-2 capitalize hover:text-[#00D9E9] active:text-[#00D9E9]"
+                >
+                  My Campaign
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/allcampaing"
+                  className="text-lg font-semibold ml-2 capitalize hover:text-[#00D9E9] active:text-[#00D9E9]"
+                >
+                  All Campaign
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/mydonation"
+                  className="text-lg font-semibold ml-2 capitalize hover:text-[#00D9E9] active:text-[#00D9E9]"
+                >
+                  My Donation
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/addnewcampaing"
+                  className="text-lg font-semibold ml-2 capitalize hover:text-[#00D9E9] active:text-[#00D9E9]"
+                >
+                  Add New Campaign
+                </NavLink>
+              </li>
             </ul>
           </div>
           <Link to="/">
@@ -87,7 +96,48 @@ const Navbar = () => {
 
         {/* Center Section */}
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">{link}</ul>
+          <ul className="menu menu-horizontal px-1">
+            <li>
+              <NavLink
+                to="/"
+                className="text-lg font-semibold ml-2 capitalize hover:text-[#00D9E9] active:text-[#00D9E9]"
+              >
+                Home
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/mycampaing"
+                className="text-lg font-semibold ml-2 capitalize hover:text-[#00D9E9] active:text-[#00D9E9]"
+              >
+                My Campaign
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/allcampaing"
+                className="text-lg font-semibold ml-2 capitalize hover:text-[#00D9E9] active:text-[#00D9E9]"
+              >
+                All Campaign
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/mydonation"
+                className="text-lg font-semibold ml-2 capitalize hover:text-[#00D9E9] active:text-[#00D9E9]"
+              >
+                My Donation
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/addnewcampaing"
+                className="text-lg font-semibold ml-2 capitalize hover:text-[#00D9E9] active:text-[#00D9E9]"
+              >
+                Add New Campaign
+              </NavLink>
+            </li>
+          </ul>
         </div>
 
         {/* Right Section */}

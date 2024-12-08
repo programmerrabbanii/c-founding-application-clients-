@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../auth/AuthProvider";
+import Swal from 'sweetalert2';  // SweetAlert2 import করা হলো
 
 const MyCampaign = () => {
   const [campaigns, setCampaigns] = useState([]);
@@ -24,24 +25,33 @@ const MyCampaign = () => {
   }, [user?.email]);
 
   const handleDelete = async (id) => {
-    const confirmDelete = window.confirm(
-      "Are you sure you want to delete this campaign?"
-    );
-    if (!confirmDelete) return;
-
-    try {
-      const response = await fetch(`http://localhost:5000/crowds/${id}`, {
-        method: "DELETE",
-      });
-      if (response.ok) {
-        setCampaigns(campaigns.filter((campaign) => campaign._id !== id));
-        alert("Campaign deleted successfully.");
-      } else {
-        alert("Failed to delete the campaign.");
+    // SweetAlert2 দিয়ে confirm alert
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "Do you really want to delete this campaign?",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!',
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          const response = await fetch(`http://localhost:5000/crowds/${id}`, {
+            method: "DELETE",
+          });
+          if (response.ok) {
+            setCampaigns(campaigns.filter((campaign) => campaign._id !== id));
+            Swal.fire("Deleted!", "Your campaign has been deleted.", "success");
+          } else {
+            Swal.fire("Failed!", "There was an error deleting the campaign.", "error");
+          }
+        } catch (error) {
+          console.error("Error deleting campaign:", error);
+          Swal.fire("Error!", "Something went wrong. Please try again later.", "error");
+        }
       }
-    } catch (error) {
-      console.error("Error deleting campaign:", error);
-    }
+    });
   };
 
   return (
