@@ -10,6 +10,7 @@ import Register from "../pages/Register";
 import Login from "../pages/Login";
 import SeeMore from "../pages/SeeMore";
 import PrivateRouter from "../private/PrivateRouter";
+import Update from "../pages/Update";
 
 const router=createBrowserRouter([
     {
@@ -53,6 +54,11 @@ const router=createBrowserRouter([
                 path:"/seemore/:id",
                 element:<SeeMore></SeeMore>,
                 loader:({params})=>fetch(`http://localhost:5000/crowds/${params.id}`)
+            },
+            {
+                path:"/update/:id",
+                element:<Update></Update>,
+                loader:({params})=> fetch(`http://localhost:5000/crowds/${params.id}`)
             }
         ]
     }

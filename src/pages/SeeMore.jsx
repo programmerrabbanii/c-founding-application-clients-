@@ -1,6 +1,6 @@
 import { useLoaderData } from "react-router-dom";
 import { useContext } from "react";
-import Swal from "sweetalert2"; // SweetAlert2 ইমপোর্ট করুন
+import Swal from "sweetalert2"; 
 import { AuthContext } from "../auth/AuthProvider";
 
 const SeeMore = () => {
@@ -30,7 +30,7 @@ const SeeMore = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data?.insertedId) {
-          // সফল হলে অ্যালার্ট দেখান
+          
           Swal.fire({
             title: "Thank You!",
             text: "Your donation was successfully added!",
@@ -38,7 +38,7 @@ const SeeMore = () => {
             confirmButtonText: "OK",
           });
         } else {
-          // কোনো সমস্যা হলে অ্যালার্ট দেখান
+          
           Swal.fire({
             title: "Error!",
             text: "Something went wrong. Please try again.",
@@ -60,7 +60,7 @@ const SeeMore = () => {
   return (
     <div className="max-w-4xl mx-auto mt-10 p-6 bg-white border border-gray-200 rounded-lg shadow-lg">
       <div className="flex flex-col md:flex-row">
-        {/* Image Section */}
+       
         <div className="md:w-1/3">
           <img
             src={imageURL}
@@ -69,7 +69,7 @@ const SeeMore = () => {
           />
         </div>
 
-        {/* Details Section */}
+       
         <div className="md:w-2/3 md:pl-6 mt-4 md:mt-0">
           <h1 className="text-3xl font-bold text-gray-800 mb-4">{title}</h1>
           <p className="text-lg text-gray-600 mb-2">
@@ -89,7 +89,7 @@ const SeeMore = () => {
         </div>
       </div>
 
-      {/* CTA Section */}
+    
       <div className="mt-6 text-center">
         <button
           onClick={handleDonate}

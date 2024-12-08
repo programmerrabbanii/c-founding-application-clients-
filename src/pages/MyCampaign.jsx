@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../auth/AuthProvider";
-import Swal from 'sweetalert2';  // SweetAlert2 import করা হলো
+import Swal from 'sweetalert2';  
+import { Link } from "react-router-dom";
 
 const MyCampaign = () => {
   const [campaigns, setCampaigns] = useState([]);
@@ -25,7 +26,7 @@ const MyCampaign = () => {
   }, [user?.email]);
 
   const handleDelete = async (id) => {
-    // SweetAlert2 দিয়ে confirm alert
+    
     Swal.fire({
       title: 'Are you sure?',
       text: "Do you really want to delete this campaign?",
@@ -76,12 +77,14 @@ const MyCampaign = () => {
                   {new Date(campaign.deadline).toLocaleDateString()}
                 </td>
                 <td className="border px-4 py-2 text-center">
-                  <button
+
+                  <Link to={`/update/${campaign._id}`}
                     className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded mr-2"
                     onClick={() => alert("Update feature coming soon")}
                   >
                     Update
-                  </button>
+                  </Link>
+
                   <button
                     className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded"
                     onClick={() => handleDelete(campaign._id)}

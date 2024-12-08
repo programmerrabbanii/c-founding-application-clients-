@@ -18,7 +18,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="shadow-lg">
+    <div className="shadow-lg sticky top-0 z-10">
       <div className="navbar bg-base-100 max-w-7xl mx-auto px-4">
         {/* Left Section */}
         <div className="navbar-start">

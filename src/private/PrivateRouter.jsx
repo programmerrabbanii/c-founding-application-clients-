@@ -5,7 +5,7 @@ import { Navigate } from "react-router-dom";
 const PrivateRouter = ({children}) => {
     const {user,loading}=useContext(AuthContext)
     if(loading){
-        <span className="loading loading-spinner text-error"></span>
+       return <span className="loading loading-spinner text-error"></span>
 
     }
     
