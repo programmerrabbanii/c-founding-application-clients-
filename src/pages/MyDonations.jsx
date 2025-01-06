@@ -10,7 +10,7 @@ const MyDonations = () => {
     
         const getDonate = async () => {
             try {
-                const response = await fetch(`http://localhost:5000/donate/${user.email}`);
+                const response = await fetch(`https://assignment-ten-server-tawny-pi.vercel.app/donate/${user.email}`);
                 if (!response.ok) {
                     throw new Error(`HTTP error! Status: ${response.status}`);
                 }

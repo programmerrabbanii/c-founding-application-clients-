@@ -1,15 +1,20 @@
 import { Link, NavLink } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../auth/AuthProvider";
 import navLogo from "../assets/business-crowdfundingLogo.jpg";
 import ThemToggol from "./ThemToggol";
 
 const Navbar = () => {
   const { user, logOutUser } = useContext(AuthContext);
+  const [isHovered, setIsHovered] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
+  const handleClick = () => {
+    setIsClicked(!isClicked); 
+  };
 
   // Handle logout
   const handleLogout = () => {
-    logOutUser()
+    logOutUser() 
       .then(() => {
         console.log("User logged out successfully!");
       })
@@ -19,8 +24,11 @@ const Navbar = () => {
   };
 
   return (
-    <div className="shadow-lg sticky top-0 z-10">
-      <div className="navbar bg-base-100 max-w-7xl mx-auto px-4">
+    <div
+      className="shadow-lg sticky top-0 z-10 backdrop-blur-md bg-blend-overlay
+  "
+    >
+      <div className="navbar w-11/12  mx-auto px-4">
         {/* Left Section */}
         <div className="navbar-start">
           <div className="dropdown">
@@ -131,7 +139,7 @@ const Navbar = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink 
+              <NavLink
                 to="/addnewcampaing"
                 className="text-lg font-semibold ml-2 capitalize hover:text-[#00D9E9] active:text-[#00D9E9]"
               >
@@ -140,43 +148,51 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-       
+
         {/* Right Section */}
         <div className="navbar-end flex items-center gap-4">
-           <p> <ThemToggol></ThemToggol> </p>
+          <p>
+            {" "}
+            <ThemToggol></ThemToggol>{" "}
+          </p>
           {user ? (
-            <> 
-              <div className="flex items-center gap-2">
+            <>
+             
+ 
+              <div className="relative">
                 <img
-                  src={user.photoURL || "https://via.placeholder.com/40"}
-                  alt={user.displayName || "User"}
-                  className="w-10 h-10 rounded-full border"
+                  className="w-16 h-16 rounded-full border-4 border-gray-500 cursor-pointer"
+                  src={user.photoURL}
+                  alt="User"
+                  onClick={handleClick}
+                  onMouseEnter={() => setIsHovered(true)}
+                  onMouseLeave={() => setIsHovered(false)}
                 />
-                <span className="text-lg font-semibold">
-                  {user.email || "Anonymous"}
-                </span>
+
+                {(isHovered || isClicked) && (
+                  <div className="absolute top-full mt-2 left-1/2 transform -translate-x-1/2 bg-white shadow-lg rounded-xl p-4 w-48 text-center">
+                    <p className="font-bold text-gray-800">
+                      {user.displayName || "User"}
+                    </p>
+                    <button
+                      onClick={handleLogout}
+                      className="mt-2 bg-gradient-to-r from-blue-600 to-teal-500 text-white font-bold text-base px-4 py-2 rounded-md hover:bg-teal-700 transition duration-300"
+                    >
+                      Sign Out
+                    </button>
+                  </div>
+                )}
               </div>
-              <button
-                onClick={handleLogout}
-                className="btn bg-[#00D9E9] text-white px-4 py-2 rounded-lg hover:bg-[#00D9E9] transition-all"
-              >
-                Logout
-              </button>
             </>
           ) : (
             <>
-              <Link
-                to="/login"
-                className="btn bg-[#00D9E9] text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-all"
-              >
-                Login
-              </Link>
-              <Link
-                to="/register"
-                className="btn bg-[#00D9E9] text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-all"
-              >
-                Register
-              </Link>
+              
+              <a className="btn bg-gradient-to-r from-blue-600 to-teal-500 text-white font-bold text-base">
+                <Link to="/login">Login </Link>{" "}
+              </a>{" "}
+              <a className="btn bg-gradient-to-r from-teal-500 to-blue-600 text-white font-bold text-base">
+                <Link to="register">Register </Link>{" "}
+              </a>
             </>
           )}
         </div>

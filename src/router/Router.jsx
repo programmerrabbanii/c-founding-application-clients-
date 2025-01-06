@@ -21,9 +21,9 @@ const router=createBrowserRouter([
             {
                 path:'/',
                 element:<Home></Home>,
-                loader:()=> fetch('http://localhost:5000/crowds')
+                loader:()=> fetch('https://assignment-ten-server-tawny-pi.vercel.app/crowds')
 
-            },
+            }, 
             {
                 path:'/mycampaing',
                 element:<PrivateRouter><MyCampaign></MyCampaign></PrivateRouter>
@@ -31,13 +31,13 @@ const router=createBrowserRouter([
             {
                 path:'/allcampaing',
                 element:<AllCampaign></AllCampaign>,
-                loader:()=>fetch('http://localhost:5000/allCrowds')
+                loader:()=>fetch('https://assignment-ten-server-tawny-pi.vercel.app/allCrowds')
             },
             {
                 path:'/mydonation',
                 element:<PrivateRouter><MyDonations></MyDonations></PrivateRouter>,
                 
-            },
+            }, 
             {
                 path:'/addnewcampaing',
                 element:<PrivateRouter><AddNewCampaign></AddNewCampaign></PrivateRouter>
@@ -53,12 +53,12 @@ const router=createBrowserRouter([
             {
                 path:"/seemore/:id",
                 element:<SeeMore></SeeMore>,
-                loader:({params})=>fetch(`http://localhost:5000/crowds/${params.id}`)
+                loader:({params})=>fetch(`https://assignment-ten-server-tawny-pi.vercel.app/crowds/${params.id}`)
             },
             {
                 path:"/update/:id",
                 element:<Update></Update>,
-                loader:({params})=> fetch(`http://localhost:5000/crowds/${params.id}`)
+                loader:({params})=> fetch(`https://assignment-ten-server-tawny-pi.vercel.app/crowds/${params.id}`)
             }
         ]
     }

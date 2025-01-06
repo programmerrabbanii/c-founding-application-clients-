@@ -6,19 +6,16 @@ const Bannar = () => {
     console.log("Typing completed!");
   };
 
-  const handleType = (count) => {
-    console.log(`Typed ${count} words`);
-  };
+  const handleType = (count) => {};
 
   return (
     <div className="relative">
       <div className="carousel w-full">
-        
         {/* Slide 1 */}
         <div id="slide1" className="carousel-item relative w-full">
           <img
             src="https://i.ibb.co/JzNymHF/close-up-coin-jar-with-tree.jpg"
-            className="w-full h-screen object-cover"
+            className="w-full h-[70vh] object-cover"
             alt="Slide 1"
           />
           <div className="absolute inset-0 bg-black opacity-50"></div>
@@ -58,7 +55,7 @@ const Bannar = () => {
         <div id="slide2" className="carousel-item relative w-full">
           <img
             src="https://i.ibb.co/448qZSV/dream-word-wooden-cubes.jpg"
-            className="w-full h-screen object-cover"
+            className="w-full h-[70vh] object-cover"
             alt="Slide 2"
           />
           <div className="absolute inset-0 bg-black opacity-50"></div>
@@ -98,7 +95,7 @@ const Bannar = () => {
         <div id="slide3" className="carousel-item relative w-full">
           <img
             src="https://i.ibb.co/Vv2kkty/white-rag-dolls-field.jpg"
-            className="w-full h-screen object-cover"
+            className="w-full h-[70vh] object-cover"
             alt="Slide 3"
           />
           <div className="absolute inset-0 bg-black opacity-50"></div>

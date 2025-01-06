@@ -2,25 +2,31 @@ import moment from "moment";
 import { Link } from "react-router-dom";
 
 const HomeCard = ({ homeCollection }) => {
-  const { _id, imageURL, campaignType, title, deadline } = homeCollection;
+  const { _id, imageURL, campaignType, deadline } = homeCollection;
 
   return (
-    <div className="flex justify-center py-4">
-      <div className="card bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden transition-transform hover:scale-105 min-h-[400px] flex flex-col max-w-sm w-full">
+    <div className=" py-4">
+      <div className="card bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden transition-transform hover:scale-105 min-h-[400px] ">
+        {/* Image */}
         <figure>
           <img
             className="h-48 w-full object-cover"
             src={imageURL}
-            alt={title || "Campaign Image"}
+            alt="Campaign Image"
           />
         </figure>
         <div className="card-body flex flex-col flex-grow p-6">
-          <h2 className="text-2xl font-semibold text-gray-800  hover:text-blue-600 transition-colors duration-200">{title}</h2>
-          <p className="text-sm text-gray-500  capitalize">{campaignType}</p>
-          <p className="text-lg font-medium text-gray-700 ">
-            <span className="font-semibold">Deadline:</span>{" "}
-            {moment(deadline, "D-M-YYYY").format("MMMM D, YYYY")}
-          </p>
+          {/* Campaign Type and Deadline */}
+          <div className="text-sm text-gray-500 mb-3">
+            <p className="capitalize mb-1">
+              <span className="font-semibold">Type:</span> {campaignType}
+            </p>
+            <p>
+              <span className="font-semibold">Deadline:</span>{" "}
+              {moment(deadline, "D-M-YYYY").format("MMMM D, YYYY")}
+            </p>
+          </div>
+          {/* See More Button */}
           <div className="mt-auto">
             <Link
               to={`/seemore/${_id}`}

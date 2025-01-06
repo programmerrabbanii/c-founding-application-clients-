@@ -20,7 +20,7 @@ const SeeMore = () => {
   oneData.userEmail = user?.email;
 
   const handleDonate = () => {
-    fetch("http://localhost:5000/donate", {
+    fetch("https://assignment-ten-server-tawny-pi.vercel.app/donate", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

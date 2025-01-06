@@ -24,9 +24,8 @@ const AddNewCampaing = () => {
       userEmail: user?.email,
       userName: user?.displayName,
     };
-    console.log(newCampaign);
 
-    fetch('http://localhost:5000/crowds/',{
+    fetch('https://assignment-ten-server-tawny-pi.vercel.app/crowds/',{
         method:'POST',
         headers:{
             'content-type' : 'application/json'

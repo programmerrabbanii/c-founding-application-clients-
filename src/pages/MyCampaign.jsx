@@ -11,7 +11,7 @@ const MyCampaign = () => {
     const fetchCampaigns = async () => {
       try {
         const response = await fetch(
-          `http://localhost:5000/my-campaing/${user?.email}`
+          `https://assignment-ten-server-tawny-pi.vercel.app/my-campaing/${user?.email}`
         );
         const data = await response.json();
         setCampaigns(data); 
@@ -38,7 +38,7 @@ const MyCampaign = () => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          const response = await fetch(`http://localhost:5000/crowds/${id}`, {
+          const response = await fetch(`https://assignment-ten-server-tawny-pi.vercel.app/crowds/${id}`, {
             method: "DELETE",
           });
           if (response.ok) {

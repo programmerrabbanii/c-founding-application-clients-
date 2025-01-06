@@ -22,7 +22,7 @@ const Update = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    const response = await fetch(`http://localhost:5000/crowds/${campaign._id}`, {
+    const response = await fetch(`https://assignment-ten-server-tawny-pi.vercel.app/crowds/${campaign._id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
