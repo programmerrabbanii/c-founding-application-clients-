@@ -1,4 +1,8 @@
 import React from "react";
+import crown from "../assets/crowd.jpg"
+import mission from "../assets/mission.jpg"
+import join from "../assets/joinus.jpg"
+import success from "../assets/success.jpg"
 
 const AboutPage = () => {
   return (
@@ -18,7 +22,7 @@ const AboutPage = () => {
         <section className="flex flex-col lg:flex-row items-center gap-12 mb-20">
           <div className="lg:w-1/2">
             <img
-              src="https://via.placeholder.com/600x400"
+              src={crown}
               alt="Crowdfunding Illustration"
               className="rounded-2xl shadow-lg w-full hover:opacity-95 transition-opacity"
             />
@@ -42,7 +46,7 @@ const AboutPage = () => {
         <section className="flex flex-col lg:flex-row-reverse items-center gap-12 mb-20">
           <div className="lg:w-1/2">
             <img
-              src="https://via.placeholder.com/600x400"
+              src={mission}
               alt="Mission Illustration"
               className="rounded-2xl shadow-lg w-full hover:opacity-95 transition-opacity"
             />
@@ -64,7 +68,7 @@ const AboutPage = () => {
         <section className="flex flex-col lg:flex-row items-center gap-12 mb-20">
           <div className="lg:w-1/2">
             <img
-              src="https://via.placeholder.com/600x400"
+              src={success}
               alt="Success Stories"
               className="rounded-2xl shadow-lg w-full hover:opacity-95 transition-opacity"
             />
@@ -86,7 +90,7 @@ const AboutPage = () => {
         <section className="flex flex-col lg:flex-row-reverse items-center gap-12">
           <div className="lg:w-1/2">
             <img
-              src="https://via.placeholder.com/600x400"
+              src={join}
               alt="Join Us Illustration"
               className="rounded-2xl shadow-lg w-full hover:opacity-95 transition-opacity"
             />
