@@ -3,6 +3,9 @@ import ContactUs from "../components/ContactUs";
 import FAQ from "../components/FAQ";
 import HomeCard from "./HomeCard";
 import { Typewriter } from "react-simple-typewriter";
+import Blog from "./Blog";
+import TopCampaing from "../components/TopCampaing";
+import News from "../components/News";
 
 const Home = () => {
   const homePageData = useLoaderData();
@@ -28,6 +31,9 @@ const Home = () => {
 
       <ContactUs></ContactUs>
       <FAQ></FAQ>
+      <Blog></Blog>
+      <TopCampaing></TopCampaing>
+      <News></News> 
     </div>
   );
 };

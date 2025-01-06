@@ -12,6 +12,8 @@ import SeeMore from "../pages/SeeMore";
 import PrivateRouter from "../private/PrivateRouter";
 import Update from "../pages/Update";
 import AboutPage from "../components/AboutPage";
+import SupportPage from "../components/SupportPage";
+import Contac from "../components/Contac";
 
 const router=createBrowserRouter([
     {
@@ -28,6 +30,15 @@ const router=createBrowserRouter([
             {
                 path:"/about",
                 element:<AboutPage></AboutPage>
+            },
+            {
+                path:"/support",
+                element:<SupportPage></SupportPage>
+
+            },
+            {
+                path:"/contact",
+                element:<Contac></Contac>
             },
             {
                 path:'/mycampaing',

@@ -28,7 +28,7 @@ const Navbar = () => {
       <li>
         <NavLink
           to="/"
-          className="text-lg font-semibold ml-2 capitalize hover:text-[#00D9E9] active:text-[#00D9E9]"
+          className="capitalize hover:text-[#00D9E9] active:text-[#00D9E9]"
         >
           Home
         </NavLink>
@@ -36,16 +36,33 @@ const Navbar = () => {
       <li>
         <NavLink
           to="/about"
-          className="text-lg font-semibold ml-2 capitalize hover:text-[#00D9E9] active:text-[#00D9E9]"
+          className="capitalize hover:text-[#00D9E9] active:text-[#00D9E9]"
         >
-          About
+          About Us
+        </NavLink>
+      </li>
+
+      <li>
+        <NavLink
+          to="/support"
+          className="capitalize hover:text-[#00D9E9] active:text-[#00D9E9]"
+        >
+          Support
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/contact"
+          className="capitalize hover:text-[#00D9E9] active:text-[#00D9E9]"
+        >
+          Contact
         </NavLink>
       </li>
       {user && (
         <li>
           <NavLink
             to="/mycampaing"
-            className="text-lg font-semibold ml-2 capitalize hover:text-[#00D9E9] active:text-[#00D9E9]"
+            className="capitalize hover:text-[#00D9E9] active:text-[#00D9E9]"
           >
             My Campaign
           </NavLink>
@@ -54,7 +71,7 @@ const Navbar = () => {
       <li>
         <NavLink
           to="/allcampaing"
-          className="text-lg font-semibold ml-2 capitalize hover:text-[#00D9E9] active:text-[#00D9E9]"
+          className=" capitalize hover:text-[#00D9E9] active:text-[#00D9E9]"
         >
           All Campaign
         </NavLink>
@@ -63,7 +80,7 @@ const Navbar = () => {
         user? <li>
         <NavLink
           to="/mydonation"
-          className="text-lg font-semibold ml-2 capitalize hover:text-[#00D9E9] active:text-[#00D9E9]"
+          className="capitalize hover:text-[#00D9E9] active:text-[#00D9E9]"
         >
           My Donation
         </NavLink>
@@ -73,7 +90,7 @@ const Navbar = () => {
         <li>
           <NavLink
             to="/addnewcampaing"
-            className="text-lg font-semibold ml-2 capitalize hover:text-[#00D9E9] active:text-[#00D9E9]"
+            className="capitalize hover:text-[#00D9E9] active:text-[#00D9E9]"
           >
             Add New Campaign
           </NavLink>
@@ -133,7 +150,7 @@ const Navbar = () => {
           {user ? (
             <div className="relative">
               <img
-                className="w-16 h-16 rounded-full border-4 border-gray-500 cursor-pointer"
+                className="w-10 h-10 rounded-full border-4 border-gray-500 cursor-pointer"
                 src={user.photoURL}
                 alt="User"
                 onClick={handleClick}
