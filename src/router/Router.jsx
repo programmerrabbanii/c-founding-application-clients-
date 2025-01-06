@@ -11,6 +11,7 @@ import Login from "../pages/Login";
 import SeeMore from "../pages/SeeMore";
 import PrivateRouter from "../private/PrivateRouter";
 import Update from "../pages/Update";
+import AboutPage from "../components/AboutPage";
 
 const router=createBrowserRouter([
     {
@@ -24,6 +25,10 @@ const router=createBrowserRouter([
                 loader:()=> fetch('https://assignment-ten-server-tawny-pi.vercel.app/crowds')
 
             }, 
+            {
+                path:"/about",
+                element:<AboutPage></AboutPage>
+            },
             {
                 path:'/mycampaing',
                 element:<PrivateRouter><MyCampaign></MyCampaign></PrivateRouter>

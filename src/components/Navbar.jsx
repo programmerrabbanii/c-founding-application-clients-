@@ -8,13 +8,13 @@ const Navbar = () => {
   const { user, logOutUser } = useContext(AuthContext);
   const [isHovered, setIsHovered] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
+
   const handleClick = () => {
-    setIsClicked(!isClicked); 
+    setIsClicked(!isClicked);
   };
 
-  // Handle logout
   const handleLogout = () => {
-    logOutUser() 
+    logOutUser()
       .then(() => {
         console.log("User logged out successfully!");
       })
@@ -23,12 +23,68 @@ const Navbar = () => {
       });
   };
 
+  const links = (
+    <>
+      <li>
+        <NavLink
+          to="/"
+          className="text-lg font-semibold ml-2 capitalize hover:text-[#00D9E9] active:text-[#00D9E9]"
+        >
+          Home
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/about"
+          className="text-lg font-semibold ml-2 capitalize hover:text-[#00D9E9] active:text-[#00D9E9]"
+        >
+          About
+        </NavLink>
+      </li>
+      {user && (
+        <li>
+          <NavLink
+            to="/mycampaing"
+            className="text-lg font-semibold ml-2 capitalize hover:text-[#00D9E9] active:text-[#00D9E9]"
+          >
+            My Campaign
+          </NavLink>
+        </li>
+      )}
+      <li>
+        <NavLink
+          to="/allcampaing"
+          className="text-lg font-semibold ml-2 capitalize hover:text-[#00D9E9] active:text-[#00D9E9]"
+        >
+          All Campaign
+        </NavLink>
+      </li>
+      {
+        user? <li>
+        <NavLink
+          to="/mydonation"
+          className="text-lg font-semibold ml-2 capitalize hover:text-[#00D9E9] active:text-[#00D9E9]"
+        >
+          My Donation
+        </NavLink>
+      </li> : null
+      }
+      {user && (
+        <li>
+          <NavLink
+            to="/addnewcampaing"
+            className="text-lg font-semibold ml-2 capitalize hover:text-[#00D9E9] active:text-[#00D9E9]"
+          >
+            Add New Campaign
+          </NavLink>
+        </li>
+      )}
+    </>
+  );
+
   return (
-    <div
-      className="shadow-lg sticky top-0 z-10 backdrop-blur-md bg-blend-overlay
-  "
-    >
-      <div className="navbar w-11/12  mx-auto px-4">
+    <div className="shadow-lg sticky top-0 z-10 backdrop-blur-md bg-blend-overlay">
+      <div className="navbar w-11/12 mx-auto px-4">
         {/* Left Section */}
         <div className="navbar-start">
           <div className="dropdown">
@@ -56,46 +112,7 @@ const Navbar = () => {
               tabIndex={0}
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
             >
-              <li>
-                <NavLink
-                  to="/"
-                  className="text-lg font-semibold ml-2 capitalize hover:text-[#00D9E9] active:text-[#00D9E9]"
-                >
-                  Home
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/mycampaing"
-                  className="text-lg font-semibold ml-2 capitalize hover:text-[#00D9E9] active:text-[#00D9E9]"
-                >
-                  My Campaign
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/allcampaing"
-                  className="text-lg font-semibold ml-2 capitalize hover:text-[#00D9E9] active:text-[#00D9E9]"
-                >
-                  All Campaign
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/mydonation"
-                  className="text-lg font-semibold ml-2 capitalize hover:text-[#00D9E9] active:text-[#00D9E9]"
-                >
-                  My Donation
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/addnewcampaing"
-                  className="text-lg font-semibold ml-2 capitalize hover:text-[#00D9E9] active:text-[#00D9E9]"
-                >
-                  Add New Campaign
-                </NavLink>
-              </li>
+              {links}
             </ul>
           </div>
           <Link to="/">
@@ -105,94 +122,52 @@ const Navbar = () => {
 
         {/* Center Section */}
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
-            <li>
-              <NavLink
-                to="/"
-                className="text-lg font-semibold ml-2 capitalize hover:text-[#00D9E9] active:text-[#00D9E9]"
-              >
-                Home
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/mycampaing"
-                className="text-lg font-semibold ml-2 capitalize hover:text-[#00D9E9] active:text-[#00D9E9]"
-              >
-                My Campaign
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/allcampaing"
-                className="text-lg font-semibold ml-2 capitalize hover:text-[#00D9E9] active:text-[#00D9E9]"
-              >
-                All Campaign
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/mydonation"
-                className="text-lg font-semibold ml-2 capitalize hover:text-[#00D9E9] active:text-[#00D9E9]"
-              >
-                My Donation
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/addnewcampaing"
-                className="text-lg font-semibold ml-2 capitalize hover:text-[#00D9E9] active:text-[#00D9E9]"
-              >
-                Add New Campaign
-              </NavLink>
-            </li>
-          </ul>
+          <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
 
         {/* Right Section */}
         <div className="navbar-end flex items-center gap-4">
           <p>
-            {" "}
-            <ThemToggol></ThemToggol>{" "}
+            <ThemToggol />
           </p>
           {user ? (
-            <>
-             
- 
-              <div className="relative">
-                <img
-                  className="w-16 h-16 rounded-full border-4 border-gray-500 cursor-pointer"
-                  src={user.photoURL}
-                  alt="User"
-                  onClick={handleClick}
-                  onMouseEnter={() => setIsHovered(true)}
-                  onMouseLeave={() => setIsHovered(false)}
-                />
-
-                {(isHovered || isClicked) && (
-                  <div className="absolute top-full mt-2 left-1/2 transform -translate-x-1/2 bg-white shadow-lg rounded-xl p-4 w-48 text-center">
-                    <p className="font-bold text-gray-800">
-                      {user.displayName || "User"}
-                    </p>
-                    <button
-                      onClick={handleLogout}
-                      className="mt-2 bg-gradient-to-r from-blue-600 to-teal-500 text-white font-bold text-base px-4 py-2 rounded-md hover:bg-teal-700 transition duration-300"
-                    >
-                      Sign Out
-                    </button>
-                  </div>
-                )}
-              </div>
-            </>
+            <div className="relative">
+              <img
+                className="w-16 h-16 rounded-full border-4 border-gray-500 cursor-pointer"
+                src={user.photoURL}
+                alt="User"
+                onClick={handleClick}
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
+              />
+              {(isHovered || isClicked) && (
+                <div className="absolute top-full mt-2 left-1/2 transform -translate-x-1/2 bg-white shadow-lg rounded-xl p-4 w-48 text-center">
+                  <p className="font-bold text-gray-800">
+                    {user.displayName || "User"}
+                  </p>
+                  <button
+                    onClick={handleLogout}
+                    className="mt-2 bg-gradient-to-r from-blue-600 to-teal-500 text-white font-bold text-base px-4 py-2 rounded-md hover:bg-teal-700 transition duration-300"
+                  >
+                    Sign Out
+                  </button>
+                </div>
+              )}
+            </div>
           ) : (
             <>
-              
-              <a className="btn bg-gradient-to-r from-blue-600 to-teal-500 text-white font-bold text-base">
-                <Link to="/login">Login </Link>{" "}
-              </a>{" "}
-              <a className="btn bg-gradient-to-r from-teal-500 to-blue-600 text-white font-bold text-base">
-                <Link to="register">Register </Link>{" "}
-              </a>
+              <Link
+                to="/login"
+                className="btn bg-gradient-to-r from-blue-600 to-teal-500 text-white font-bold text-base"
+              >
+                Login
+              </Link>
+              <Link
+                to="/register"
+                className="btn bg-gradient-to-r from-teal-500 to-blue-600 text-white font-bold text-base"
+              >
+                Register
+              </Link>
             </>
           )}
         </div>
