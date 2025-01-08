@@ -3,8 +3,6 @@
 🌟 Crowdcube: A Crowd Funding Application 🌟
 Crowdcube is a crowdfunding platform where users can create, browse, and contribute to campaigns for various causes, creative ideas, startups, or personal needs. The project aims to provide a seamless user experience while maintaining security, responsiveness, and a unique design.
 
-🔗 Live Site URL
-Crowdcube Live
 
 📋 Features
 Interactive Navigation:
@@ -82,3 +80,6 @@ Error Handling: Validations for password strength and proper error messages usin
 Campaign donations automatically disable for the donor after contributing.
 Sort campaigns based on minimum donation amounts.
 Campaign deadlines enforce restrictions on donations for expired campaigns.
+
+🔗 Live Site URL
+https://assignment-ten-63235.web.app/
